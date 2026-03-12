@@ -113,7 +113,7 @@ def get_zodiac_sign(birth_date: date) -> str:
 async def horoscope(birth_data: BirthDate) -> dict[str, str]:
     """Возвращает знак зодиака и гороскоп по дате рождения."""
     # 1. Определяем знак по дате
-    sign = get_zodiac_sign(birth_data.birth_date)
+    sign = get_zodiac_sign(birth_data.birthDate)
 
     # 2. Формируем URL для Horoscope API
     url = f"https://www.ohmanda.com/api/horoscope/{sign}/"
