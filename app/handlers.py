@@ -113,7 +113,7 @@ def get_zodiac_sign(birth_date: date) -> str:
 async def horoscope(birth_data: BirthDate) -> dict[str, str]:
     """Возвращает знак зодиака и гороскоп по дате рождения."""
     # 1. Определяем знак по дате
-    sign = get_zodiac_sign(birth_data.birthDate)
+    sign = get_zodiac_sign(birth_data.birthDate)  # ← исправлено!
 
     # 2. Формируем URL для Horoscope API
     url = f"https://www.ohmanda.com/api/horoscope/{sign}/"
@@ -122,8 +122,8 @@ async def horoscope(birth_data: BirthDate) -> dict[str, str]:
         # 3. Делаем запрос
         response = requests.get(url, timeout=5)
         response.raise_for_status()
-        data = response.json()  # ожидаем, что API вернёт JSON
-        # 4. Добавляем знак в ответ (на случай, если API его не возвращает)
+        data = response.json()
+        # 4. Добавляем знак в ответ
         data["sign"] = sign
         return data
     except requests.exceptions.RequestException as e:
